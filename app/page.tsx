@@ -67,39 +67,46 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero" id="top">
-        <div className="container hero-grid">
-          <div className="hero-artwork">
-            <img
-              src="/og.png"
-              alt="The Long Build — Restoration isn’t a repair order. Software for restoration and custom shops."
-              width="1536"
-              height="1024"
-            />
+      <section className="statement-hero" id="top">
+        <div className="hero-frame">
+          <div className="hero-ruler" aria-hidden="true">
+            <span /><span /><span /><span /><span /><span /><span /><span /><span />
           </div>
 
-          <div className="hero-copy">
-            <p className="eyebrow">Built for the long build</p>
-            <h1 className="sr-only">Restoration isn’t a repair order.</h1>
-            <div className="hero-lede">
-              <p>A repair may stay open for a day.</p>
-              <p>A restoration can stay open for a year.</p>
-              <p>
-                Scope changes after teardown. Hundreds of technician hours accumulate. Parts move between suppliers,
-                shelves and vehicles. Customers make decisions throughout the build.
-              </p>
-              <p>Most shop software was never designed around that reality.</p>
+          <div className="hero-topline">
+            <p>The Long Build</p>
+            <p>Built for the long build</p>
+          </div>
+
+          <div className="hero-statement">
+            <h1>Restoration<br />isn’t a repair order.</h1>
+            <span className="statement-rule" aria-hidden="true" />
+          </div>
+
+          <div className="scope-route" aria-label="A visual representation of project scope changing over time">
+            <span className="route-origin" aria-hidden="true" />
+            <span className="route-solid route-a" aria-hidden="true" />
+            <span className="route-rise" aria-hidden="true" />
+            <span className="route-solid route-b" aria-hidden="true" />
+            <span className="route-dash route-c" aria-hidden="true" />
+            <span className="route-drop" aria-hidden="true" />
+            <span className="route-dash route-d" aria-hidden="true" />
+            <span className="route-rise route-rise-end" aria-hidden="true" />
+            <span className="route-solid route-e" aria-hidden="true" />
+            <span className="route-arrow" aria-hidden="true" />
+          </div>
+
+          <div className="hero-bottomline">
+            <div>
+              <p className="hero-descriptor">Software for restoration &amp; custom shops</p>
+              <p className="hero-shop-fit">Restoration · restomod · hot rod · custom fabrication</p>
             </div>
-            <div className="hero-actions">
+            <div className="hero-cta-group">
+              <span className="hero-prelaunch"><i aria-hidden="true" /> Building with shop owners</span>
               <a className="button button-primary" href="#early-access">Join early access <ArrowIcon /></a>
               <a className="text-link" href={CALENDLY_URL} target="_blank" rel="noreferrer">Talk to us <ArrowIcon /></a>
             </div>
-            <p className="hero-status"><i aria-hidden="true" /> Currently building with a small group of shop owners.</p>
           </div>
-        </div>
-        <div className="container specialty-line">
-          <span aria-hidden="true" />
-          <p>For restoration · restomod · hot rod · custom fabrication shops</p>
         </div>
       </section>
 

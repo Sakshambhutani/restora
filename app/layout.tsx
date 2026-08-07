@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "RestorationOS | Researching Software for Auto Restoration Shops";
+const title = "The Long Build | Software for Restoration & Custom Shops";
 const description =
-  "Researching how auto restoration and custom-build shops manage long-running projects, labor, parts, changing scope and customer billing.";
+  "Building software around the realities of long-running restoration and custom projects: changing scope, technician work, parts, approvals, billing and project economics.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1731, height: 909, alt: "RestorationOS industry research project" }],
+      images: [{ url: `${origin}/og.png`, width: 1536, height: 1024, alt: "The Long Build — software for restoration and custom shops" }],
     },
     twitter: { card: "summary_large_image", title, description, images: [`${origin}/og.png`] },
   };

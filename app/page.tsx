@@ -5,34 +5,50 @@ const EMAIL = "hello@[placeholder-domain].com";
 const painPoints = [
   {
     number: "01",
-    title: "Scope moves after the job starts",
-    copy: "Rust appears. Previous repairs are uncovered. Fabrication becomes necessary. Customers change direction. The original estimate quickly stops representing the actual project.",
+    label: "Scope",
+    title: "The scope you started with isn’t the scope you finish with.",
+    copy: "Teardown reveals hidden damage. Old repairs appear. Fabrication becomes necessary. Customers change direction.\n\nThe work keeps changing after the estimate was written.",
   },
   {
     number: "02",
-    title: "Work becomes WIP before it becomes revenue",
-    copy: "Labor, materials, outsourced work and parts accumulate every day. If they aren’t captured and billed continuously, the shop ends up carrying the project.",
+    label: "WIP / Billing",
+    title: "Work gets ahead of billing.",
+    copy: "Technician hours, materials, parts and outside work accumulate every day.\n\nIf everything isn’t captured, approved and billed as the project moves, the shop can end up carrying work that has already been performed.",
   },
   {
     number: "03",
-    title: "Information gets scattered",
-    copy: "Technician time lives in one place. Photos somewhere else. Customer decisions in texts. Parts in another system. Important context often stays in someone’s head.",
+    label: "Blockers",
+    title: "Projects get stuck.",
+    copy: "A build can sit waiting for a part, a customer decision, an outside vendor, fabrication or the right technician.\n\nAcross multiple long-running projects, it becomes difficult to see what is waiting, why it is waiting and what needs to happen next.",
   },
   {
     number: "04",
-    title: "Margin problems appear too late",
-    copy: "A project can run for hundreds or thousands of hours. Small gaps between work performed, recorded, approved and billed compound quietly over months.",
+    label: "Information",
+    title: "The real state of the project gets scattered.",
+    copy: "Hours are in one system. Photos are on someone’s phone. Customer approval is buried in a text. Parts are somewhere else.\n\nThe owner often ends up carrying the complete picture in their head.",
   },
 ];
 
 const workflow = [
-  "Technician discovers new damage",
-  "Photo + note",
-  "New scope captured",
-  "Labor / material impact understood",
+  "Work happens",
+  "A change is discovered",
+  "Scope / labor / material impact is captured",
   "Customer sees what changed",
   "Approval recorded",
-  "Project economics stay current",
+  "Project and billing stay current",
+];
+
+const restorationFlow = [
+  "Estimate",
+  "Teardown",
+  "Discovery",
+  "New scope",
+  "Work",
+  "Parts / outside vendor",
+  "Customer decision",
+  "More work",
+  "Billing",
+  "Continue",
 ];
 
 function ArrowIcon() {
@@ -114,41 +130,50 @@ export default function Home() {
         <div className="container">
           <div className="pain-heading">
             <p className="section-kicker section-kicker-light">The problem</p>
-            <h2>The job keeps changing. The systems around it don’t.</h2>
+            <div>
+              <h2>Where long builds start to break.</h2>
+              <p className="pain-intro">
+                The work itself isn’t the problem. It’s keeping scope, progress, customers and money aligned while the project keeps changing.
+              </p>
+            </div>
           </div>
-
-          <div className="comparison" aria-label="Normal repair compared with restoration and custom builds">
-            <article>
-              <p className="comparison-label">Normal repair</p>
-              <div className="process-line process-short">
-                {['Diagnose', 'Estimate', 'Approve', 'Repair', 'Invoice', 'Done'].map((step, index) => (
-                  <span key={step}>{step}{index < 5 && <i aria-hidden="true">→</i>}</span>
-                ))}
-              </div>
-            </article>
-            <article>
-              <p className="comparison-label">Restoration / custom build</p>
-              <div className="process-line process-long">
-                {['Estimate', 'Teardown', 'Discovery', 'New scope', 'Fabrication', 'Parts', 'Customer decision', 'More discovery', 'Progressive billing', 'Continue'].map((step, index) => (
-                  <span key={step}>{step}{index < 9 && <i aria-hidden="true">→</i>}</span>
-                ))}
-              </div>
-            </article>
-          </div>
-
-          <blockquote className="thesis">
-            <p>In normal repair, the estimate controls the work.</p>
-            <p>In restoration, the work continuously changes the estimate.</p>
-          </blockquote>
 
           <div className="pain-grid">
             {painPoints.map((pain) => (
               <article className="pain-card" key={pain.number}>
-                <span className="pain-number">Pain {pain.number}</span>
+                <div className="pain-meta"><span>{pain.number}</span><span>{pain.label}</span></div>
                 <h3>{pain.title}</h3>
-                <p>{pain.copy}</p>
+                <p>{pain.copy.split("\n\n").map((paragraph) => <span key={paragraph}>{paragraph}</span>)}</p>
               </article>
             ))}
+          </div>
+
+          <blockquote className="pain-conclusion">
+            By the time a long project looks behind, underbilled or unprofitable, much of the work has already happened.
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="why-section" id="why">
+        <div className="container why-grid">
+          <div>
+            <p className="section-kicker">Why it happens</p>
+            <h2>Why long builds are difficult to manage.</h2>
+            <p className="why-copy">
+              Most shop workflows assume a job moves from estimate to work to invoice.
+            </p>
+            <p className="why-copy">
+              A restoration keeps looping through discovery, new scope, parts, fabrication, customer decisions and billing.
+            </p>
+          </div>
+          <div>
+            <p className="flow-label">A long-build workflow</p>
+            <div className="restoration-flow">
+              {restorationFlow.map((step, index) => (
+                <span key={step}>{step}{index < restorationFlow.length - 1 && <i aria-hidden="true">→</i>}</span>
+              ))}
+            </div>
+            <blockquote className="why-thesis">In restoration, the work continuously changes the estimate.</blockquote>
           </div>
         </div>
       </section>
@@ -157,14 +182,11 @@ export default function Home() {
         <div className="container view-grid">
           <div className="view-copy">
             <p className="section-kicker">What we believe should change</p>
-            <h2>A long build needs a living project record.</h2>
+            <h2>A long build needs one living project record.</h2>
             <p className="view-lede">
-              We believe every hour, part, photo, discovery, approval and dollar should stay connected to the project it belongs to.
+              Our belief is that every hour, part, photo, discovery, customer decision and dollar should stay connected to the project it belongs to.
             </p>
             <p className="builder-statement">Technicians should spend their time building cars, not maintaining software.</p>
-            <p className="view-note">
-              We’re building toward a system that follows the work as it happens and keeps the commercial state of the project current.
-            </p>
           </div>
 
           <ol className="workflow" aria-label="Example project workflow">
@@ -184,12 +206,12 @@ export default function Home() {
             <p className="section-kicker section-kicker-light">Early access</p>
             <h2>We’re building this with restoration shops.</h2>
             <p>
-              We’re speaking with owners who manage long-running restoration, restomod and custom projects to shape the first version.
+              We’re speaking with restoration and custom-shop owners who manage multi-week and multi-month projects.
             </p>
-            <p>If this sounds familiar, we’d love to compare notes.</p>
+            <p>If these problems sound familiar, we’d love to compare notes.</p>
             <div className="access-actions">
-              <a className="button button-light" href="#access-form">Join early access <ArrowIcon /></a>
-              <a className="text-link text-link-light" href={CALENDLY_URL} target="_blank" rel="noreferrer">Talk to the founders <ArrowIcon /></a>
+              <a className="button button-light" href={CALENDLY_URL} target="_blank" rel="noreferrer">Compare notes <ArrowIcon /></a>
+              <a className="text-link text-link-light" href="#access-form">Join early access <ArrowIcon /></a>
             </div>
             <p className="conversation-note">10–15 minutes · No sales pitch</p>
             <p className="fit-line">Especially interested in shops running multiple multi-week or multi-month projects.</p>

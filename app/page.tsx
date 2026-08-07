@@ -69,9 +69,18 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="container hero-grid">
+          <div className="hero-artwork">
+            <img
+              src="/og.png"
+              alt="The Long Build — Restoration isn’t a repair order. Software for restoration and custom shops."
+              width="1536"
+              height="1024"
+            />
+          </div>
+
           <div className="hero-copy">
             <p className="eyebrow">Built for the long build</p>
-            <h1>Restoration isn’t a repair order.</h1>
+            <h1 className="sr-only">Restoration isn’t a repair order.</h1>
             <div className="hero-lede">
               <p>A repair may stay open for a day.</p>
               <p>A restoration can stay open for a year.</p>
@@ -85,17 +94,8 @@ export default function Home() {
               <a className="button button-primary" href="#early-access">Join early access <ArrowIcon /></a>
               <a className="text-link" href={CALENDLY_URL} target="_blank" rel="noreferrer">Talk to us <ArrowIcon /></a>
             </div>
+            <p className="hero-status"><i aria-hidden="true" /> Currently building with a small group of shop owners.</p>
           </div>
-
-          <aside className="build-note" aria-label="Prelaunch status">
-            <div className="build-note-top"><span>Build note / 001</span><span>Prelaunch</span></div>
-            <p className="build-note-label">What we’re building around</p>
-            <p className="build-note-title">The commercial reality of a project that keeps moving.</p>
-            <div className="build-note-lines" aria-hidden="true">
-              <span /><span /><span /><span />
-            </div>
-            <p className="build-note-status"><i aria-hidden="true" /> Currently building with a small group of shop owners.</p>
-          </aside>
         </div>
         <div className="container specialty-line">
           <span aria-hidden="true" />

@@ -89,7 +89,7 @@ export default function EarlyAccessForm() {
       </label>
       <label>
         <span>Website <small>(optional)</small></span>
-        <input type="url" name="website" autoComplete="url" inputMode="url" disabled={loading} />
+        <input type="text" name="website" autoComplete="url" placeholder="e.g. www.myshop.com" disabled={loading} />
       </label>
       <button className="button button-form" type="submit" disabled={loading}>
         {loading ? "Submitting..." : <>Request early access <ArrowIcon /></>}

@@ -89,9 +89,7 @@ export default function Home() {
           </div>
 
           <div className="hero-topline">
-            <div className="hero-brand-badge">
-              <BrandLogo className="hero-logo" />
-            </div>
+            <p>Restora</p>
             <p>Built for the long build</p>
           </div>
 
@@ -224,8 +222,8 @@ export default function Home() {
 
       <footer>
         <div className="container footer-inner">
-          <div className="footer-brand-block">
-            <BrandLogo className="footer-logo" />
+          <div>
+            <p className="footer-brand">Restora</p>
             <p>Software for restoration &amp; custom shops</p>
           </div>
           <p>© 2026 Restora</p>

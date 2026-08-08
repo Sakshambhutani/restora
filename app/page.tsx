@@ -1,8 +1,6 @@
 import EarlyAccessForm from "./EarlyAccessForm";
 
-const CALENDLY_URL = "https://calendly.com/placeholder/restoration-chat";
-const LINKEDIN_URL = "https://linkedin.com/in/placeholder";
-const EMAIL = "hello@[placeholder-domain].com";
+const CALENDLY_URL = "https://bookings.cloud.microsoft/bookwithme/user/a609d4a61b1d4a9ab9b5adbabeda30af@copilotgtm.com/meetingtype/gMn0Me3FHEurNy6COJc08w2?anonymous&ismsaljsauthenabled&ep=mlink";
 
 const painPoints = [
   {
@@ -229,10 +227,6 @@ export default function Home() {
           <div className="footer-brand-block">
             <BrandLogo className="footer-logo" />
             <p>Software for restoration &amp; custom shops</p>
-          </div>
-          <div className="footer-links">
-            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn <ArrowIcon /></a>
-            <a href={`mailto:${EMAIL}`}>Email <ArrowIcon /></a>
           </div>
           <p>© 2026 Restora</p>
         </div>

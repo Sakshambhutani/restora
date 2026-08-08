@@ -1,3 +1,5 @@
+import EarlyAccessForm from "./EarlyAccessForm";
+
 const CALENDLY_URL = "https://calendly.com/placeholder/restoration-chat";
 const LINKEDIN_URL = "https://linkedin.com/in/placeholder";
 const EMAIL = "hello@[placeholder-domain].com";
@@ -218,30 +220,7 @@ export default function Home() {
             <p className="fit-line">Especially interested in shops running multiple multi-week or multi-month projects.</p>
           </div>
 
-          <form className="access-form" id="access-form" action={`mailto:${EMAIL}`} method="post" encType="text/plain">
-            <div className="form-heading">
-              <span>Early access request</span>
-              <span>Prelaunch</span>
-            </div>
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" autoComplete="name" required />
-            </label>
-            <label>
-              <span>Shop name</span>
-              <input type="text" name="shop" autoComplete="organization" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" autoComplete="email" required />
-            </label>
-            <label>
-              <span>Website <small>(optional)</small></span>
-              <input type="url" name="website" autoComplete="url" inputMode="url" />
-            </label>
-            <button className="button button-form" type="submit">Request early access <ArrowIcon /></button>
-            <p>We’ll only contact you about The Long Build.</p>
-          </form>
+          <EarlyAccessForm />
         </div>
       </section>
 

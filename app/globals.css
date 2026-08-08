@@ -625,7 +625,51 @@ h1, h2, h3, p { text-wrap: pretty; }
   font-weight: 580;
 }
 
-.access-form small { color: #8a8c85; font-size: 10px; font-weight: 450; }
+.form-error-banner {
+  padding: 10px 14px;
+  background: #fdf2f2;
+  border: 1px solid #f8b4b4;
+  color: #9b1c1c;
+  font-size: 12px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+.access-form-success {
+  display: flex;
+  flex-direction: column;
+}
+
+.success-body {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.success-icon {
+  width: 44px;
+  height: 44px;
+  background: #057a55;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.success-body h3 {
+  font-size: 18px;
+  font-weight: 650;
+  margin: 0 0 8px;
+}
+
+.success-body p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
 
 .access-form input {
   width: 100%;

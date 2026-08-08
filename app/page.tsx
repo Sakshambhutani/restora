@@ -55,13 +55,13 @@ function ArrowIcon() {
   return <span aria-hidden="true">↗</span>;
 }
 
-function BrandMark() {
+function BrandLogo({ className = "site-logo" }: { className?: string }) {
   return (
-    <span className="brand-mark" aria-hidden="true">
-      <span />
-      <span />
-      <span />
-    </span>
+    <img
+      src="/Restora.png"
+      alt="Restora Logo"
+      className={className}
+    />
   );
 }
 
@@ -70,9 +70,8 @@ export default function Home() {
     <main>
       <header className="site-header">
         <div className="nav-shell">
-          <a className="wordmark" href="#top" aria-label="The Long Build home">
-            <BrandMark />
-            <span>The Long Build</span>
+          <a className="wordmark" href="#top" aria-label="Restora home">
+            <BrandLogo className="site-logo" />
           </a>
           <nav aria-label="Primary navigation">
             <a className="nav-link" href="#problem">The Problem</a>
@@ -90,7 +89,9 @@ export default function Home() {
           </div>
 
           <div className="hero-topline">
-            <p>The Long Build</p>
+            <div className="hero-brand-badge">
+              <BrandLogo className="hero-logo" />
+            </div>
             <p>Built for the long build</p>
           </div>
 
@@ -246,15 +247,15 @@ export default function Home() {
 
       <footer>
         <div className="container footer-inner">
-          <div>
-            <p className="footer-brand">The Long Build</p>
+          <div className="footer-brand-block">
+            <BrandLogo className="footer-logo" />
             <p>Software for restoration &amp; custom shops</p>
           </div>
           <div className="footer-links">
             <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn <ArrowIcon /></a>
             <a href={`mailto:${EMAIL}`}>Email <ArrowIcon /></a>
           </div>
-          <p>© 2026</p>
+          <p>© 2026 Restora</p>
         </div>
       </footer>
     </main>

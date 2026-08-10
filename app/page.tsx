@@ -1,4 +1,6 @@
 import EarlyAccessForm from "./EarlyAccessForm";
+import Image from "next/image";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 
 const CALENDLY_URL = "https://bookings.cloud.microsoft/bookwithme/user/a609d4a61b1d4a9ab9b5adbabeda30af@copilotgtm.com/meetingtype/gMn0Me3FHEurNy6COJc08w2?anonymous&ismsaljsauthenabled&ep=mlink";
 
@@ -51,23 +53,86 @@ const restorationFlow = [
   "Continue",
 ];
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/icon.png`,
+        contentUrl: `${SITE_URL}/icon.png`,
+        width: 512,
+        height: 512,
+      },
+      description: SITE_DESCRIPTION,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "en",
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${SITE_URL}/#software`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      softwareVersion: "Prelaunch",
+      audience: {
+        "@type": "BusinessAudience",
+        audienceType:
+          "Automotive restoration, restomod, hot rod and custom fabrication shops",
+      },
+      featureList: [
+        "Long-build project records",
+        "Changing scope and discovery tracking",
+        "Labor, parts and outside-vendor visibility",
+        "Customer decision and approval tracking",
+        "Project billing visibility",
+      ],
+      provider: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
 function ArrowIcon() {
   return <span aria-hidden="true">↗</span>;
 }
 
 function BrandLogo({ className = "site-logo" }: { className?: string }) {
   return (
-    <img
-      src="/Restora.png"
-      alt="Restora Logo"
+    <Image
+      src="/Restora-header.png"
+      alt=""
       className={className}
+      width={1100}
+      height={340}
+      sizes="(max-width: 760px) 155px, 220px"
+      priority
     />
   );
 }
 
 export default function Home() {
   return (
-    <main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="site-header">
         <div className="nav-shell">
           <a className="wordmark" href="#top" aria-label="Restora home">
@@ -76,12 +141,12 @@ export default function Home() {
           <nav aria-label="Primary navigation">
             <a className="nav-link" href="#problem">The Problem</a>
             <a className="nav-link" href="#view">Our View</a>
-            <a className="nav-link" href="#early-access">Early Access</a>
             <a className="button button-small" href="#early-access">Join early access <ArrowIcon /></a>
           </nav>
         </div>
       </header>
 
+      <main id="main-content">
       <section className="statement-hero" id="top">
         <div className="hero-frame">
           <div className="hero-ruler" aria-hidden="true">
@@ -113,7 +178,7 @@ export default function Home() {
 
           <div className="hero-bottomline">
             <div>
-              <p className="hero-descriptor">Software for restoration &amp; custom shops</p>
+              <p className="hero-descriptor">Restora is prelaunch project management software for restoration &amp; custom shops</p>
               <p className="hero-shop-fit">Restoration · restomod · hot rod · custom fabrication</p>
             </div>
             <div className="hero-cta-group">
@@ -219,6 +284,7 @@ export default function Home() {
           <EarlyAccessForm />
         </div>
       </section>
+      </main>
 
       <footer>
         <div className="container footer-inner">
@@ -229,6 +295,6 @@ export default function Home() {
           <p>© 2026 Restora</p>
         </div>
       </footer>
-    </main>
+    </>
   );
 }
